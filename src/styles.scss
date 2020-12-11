@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  color: #6d5d4b;
+  line-height: 1.6;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 80vh min-content min-content repeat(3, min-content);
+  grid-template-columns: [full-end] minmax(6rem, 1fr) [center-end] repeat(
+      8,
+      [col-end] minmax(min-content, 14rem) [col-start]
+    ) [center-start] minmax(6rem, 1fr) [full-start sidebar-end] 8rem [sidbar-start];
+}
+@media only screen and (max-width: 62.5em) {
+  .container {
+    grid-template-rows: 6rem 80vh min-content min-content repeat(3, min-content);
+    grid-template-columns: [full-end] minmax(6rem, 1fr) [center-end] repeat(
+        8,
+        [col-end] minmax(min-content, 14rem) [col-start]
+      ) [center-start] minmax(6rem, 1fr) [full-start];
+  }
+}
+@media only screen and (max-width: 50em) {
+  .container {
+    grid-template-rows: 6rem calc(100vh - 6rem) min-content min-content min-content repeat(
+        3,
+        min-content
+      );
+  }
+}
